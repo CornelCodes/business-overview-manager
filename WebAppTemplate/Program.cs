@@ -2,7 +2,7 @@ using DAL.BOMContext;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System;
 
-namespace WebAppTemplate
+namespace BusinessOverviewManager
 {
 
     public class Program
