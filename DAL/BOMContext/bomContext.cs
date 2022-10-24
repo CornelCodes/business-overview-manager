@@ -8,13 +8,13 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL.AppContext
+namespace DAL.BOMContext
 {
-    public partial class AppDbContext : DbContext
+    public partial class bomContext : DbContext
     {
         protected readonly IConfiguration Configuration;
 
-        public AppDbContext(IConfiguration configuration)
+        public bomContext(IConfiguration configuration)
         {
             Configuration = configuration;
         }

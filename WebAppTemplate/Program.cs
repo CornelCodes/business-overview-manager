@@ -1,4 +1,4 @@
-using DAL.AppContext;
+using DAL.BOMContext;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System;
 
@@ -14,9 +14,8 @@ namespace WebAppTemplate
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
-            //builder.Services.AddDbContext<ajpContext>();
             builder.Services.AddHttpContextAccessor();
-            builder.Services.AddDbContext<AppDbContext>();
+            builder.Services.AddDbContext<bomContext>();
 
 
             //cookie authentication

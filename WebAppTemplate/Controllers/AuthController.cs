@@ -1,4 +1,4 @@
-﻿using DAL.AppContext;
+﻿using DAL.BOMContext;
 using DAL.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -13,9 +13,9 @@ namespace WebAppTemplate.Controllers
     [Route("[controller]")]
     public class AuthController : Controller
     {
-        public AppDbContext dbContext { get; set; }
+        public bomContext dbContext { get; set; }
 
-        public AuthController(AppDbContext _dbContext)
+        public AuthController(bomContext _dbContext)
         {
             dbContext = _dbContext;
         }
