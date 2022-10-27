@@ -16,3 +16,8 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.page-container{
+    padding: 50px;
+}
+

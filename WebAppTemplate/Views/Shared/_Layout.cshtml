@@ -14,7 +14,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Business Overview Manager</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -27,37 +27,39 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Ideaboard" asp-action="Index">Ideaboard</a>
                         </li>
-                        @if (loggedIn)
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Logout">Logout</a>
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Index">Login</a>
-                            </li>
-                        }
+
                     </ul>
+
+
+                    @if (loggedIn)
+                    {
+                        <a class="nav-link text-dark text-end" asp-area="" asp-controller="Auth" asp-action="Logout">Logout</a>
+                    }
+                    else
+                    {
+                        <a class="nav-link text-dark text-end" asp-area="" asp-controller="Auth" asp-action="Index">Login</a>
+                    }
+
                 </div>
             </div>
         </nav>
     </header>
-    <div id="layout-top" class="p-3" style="background-color: black; color: white;">
+    <div id="layout-top" class="p-3 bg-dark text-white">
         <h3>{{activePage}}</h3>
     </div>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
+    <div id="layout-content" class="content-wrapper">
+        <main role="main">
+            <div class="page-container">
+                @RenderBody()
+            </div>
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - WebAppTemplate - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="border-top footer text-muted p-3 bg-dark" style="position: fixed; bottom: 0; left: 0; right: 0;">
+        <div class="container d-flex justify-content-end text-white">
+            &copy; 2022 - Business Overview Manager
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
