@@ -2,7 +2,26 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div id="home-page">
-
-
+<div id="home-page" class="container-fluid">
+    <header class="header">
+        <h1>What would you like to do?</h1>
+    </header>
+    <div class="card border-dark text-center mt-3" style="width: fit-content;">
+        <a class="nav-link text-dark anchor-text" asp-area="" asp-controller="Ideaboard" asp-action="Index">Ideaboard</a>
+    </div>
 </div>
+
+@section styles{
+    <style>
+        .anchor-text {
+            text-decoration: none;
+            padding: 10px;
+        }
+    </style>
+}
+
+@section scripts{
+    <script>
+
+    </script>
+}

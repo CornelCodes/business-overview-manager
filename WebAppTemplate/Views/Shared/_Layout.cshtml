@@ -57,7 +57,10 @@
         </nav>
     </header>
     <div id="layout-top" class="p-3 bg-dark text-white">
-        <h3>{{activePage}}</h3>
+        <div class="container-fluid d-flex justify-content-between">
+            <h3>{{activePage}}</h3>
+            <button class="btn btn-primary" v-on:click="back" v-if="activePage !== 'Home'">Back</button>
+        </div>
     </div>
     <div id="layout-content" class="content-wrapper">
         <main role="main">
@@ -94,6 +97,13 @@
             data() {
                 return {
                     activePage: null,
+                }
+            },
+            methods: {
+                back() {
+                    console.log("Back", window.history);
+                    window.history.back();
+
                 }
             },
             beforeMount() {
