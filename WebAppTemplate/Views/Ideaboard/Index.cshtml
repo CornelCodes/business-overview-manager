@@ -4,6 +4,111 @@
 @{
 }
 
-<div id="ideaboard-page">
+<div id="ideaboard">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header bg-dark text-white">
+                <h2>
+                    Notes
+                </h2>
+            </div>
+            <div class="card-body">
+                <div class="container-fluid d-flex flex-wrap">
+                    <div class="note new-note">
+                        <input class="form-control" type="text" name="name" placeholder="New note" v-model="newNote.title" />
+                        <textarea rows="4" class="form-control" placeholder="What are we up to today" v-model="newNote.description"></textarea>
+                        <div class="create-button bg-dark" v-on:click="createNote"><span>+</span></div>
+                    </div>
+                    <div class="note" v-for="note in notes">
+                        <input class="form-control" type="text" v-model="note.title" />
+                        <textarea rows="4" class="form-control" v-model="note.description"></textarea>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="card-footer">
 
+            </div>
+        </div>
+    </div>
 </div>
+
+@section styles{ 
+    <style scoped>
+        .note {
+            position: relative;
+        }
+
+        .new-note{
+
+        }
+
+        .create-button {
+            font-size: 14px;
+            color: white;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            flex-direction: column;
+            border: 2px solid rgba(33,37,41, 0.9);
+        }
+
+            .create-button:hover {
+                cursor: pointer;
+                background-color: white;
+            }
+    </style>
+}
+
+@section scripts{ 
+    <script>
+        var ideaboard = new Vue({
+            el: "#ideaboard",
+            data() {
+                return {
+                    newNote: {
+                        title: null,
+                        description: null
+                    },
+                    notes: null
+                }
+            },
+            methods: {
+                createNote() {
+                    console.log("Create", this.newNote);
+                    this.notes.push(this.newNote);
+                    this.clearNote()
+                },
+                clearNote() {
+                    this.newNote = {
+                        title: null,
+                        description: null
+                    }
+                },
+            },
+            beforeMount() {
+                this.notes = [
+                    {
+                        title: "Lorem Ipsum",
+                        description: "orem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiumoptio, eaque rerum! Provident similique accusantium nemo autem.Veritatisobcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam",
+                    },
+                    {
+                        title: "Lorem Ipsum",
+                        description: "orem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiumoptio, eaque rerum! Provident similique accusantium nemo autem.Veritatisobcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam",
+                    },
+                    {
+                        title: "Lorem Ipsum",
+                        description: "orem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentiumoptio, eaque rerum! Provident similique accusantium nemo autem.Veritatisobcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam",
+                    },
+                ]
+                console.log("Load test data", this.notes);
+            }
+        });
+    </script>
+}
