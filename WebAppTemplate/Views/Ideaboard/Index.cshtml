@@ -7,21 +7,27 @@
 <div id="ideaboard">
     <div class="container-fluid">
         <div class="card">
-            <div class="card-header bg-dark text-white">
+            <div class="card-header d-flex justify-content-between bg-dark text-white">
                 <h2>
                     Notes
                 </h2>
+                <button class="btn btn-secondary" v-on:click="resetHeights">
+                    Reset
+                </button>
             </div>
             <div class="card-body">
                 <div class="container-fluid d-flex flex-wrap">
                     <div class="note new-note">
-                        <input class="form-control" type="text" name="name" placeholder="New note" v-model="newNote.title" />
-                        <textarea rows="4" class="form-control" placeholder="What are we up to today" v-model="newNote.description"></textarea>
-                        <div class="create-button bg-dark" v-on:click="createNote"><span>+</span></div>
+                        <input class="form-control m-2" type="text" name="name" placeholder="New note" v-model="newNote.title" />
+                        <div class="textarea-wrapper" style="position: relative;">
+                            <textarea rows="4" class="form-control m-2" placeholder="What are we up to today" v-model="newNote.description">
+                            </textarea>
+                            <span class="create-button bg-dark" v-on:click="createNote">+</span>
+                        </div>
                     </div>
                     <div class="note" v-for="note in notes">
-                        <input class="form-control" type="text" v-model="note.title" />
-                        <textarea rows="4" class="form-control" v-model="note.description"></textarea>
+                        <input class="form-control m-2" type="text" placeholder="Note title" v-model="note.title" />
+                        <textarea rows="4" class="form-control m-2" placeholder="Description" v-model="note.description"></textarea>
                     </div>
                 </div>
                 
@@ -37,6 +43,7 @@
     <style scoped>
         .note {
             position: relative;
+            margin: 5px;
         }
 
         .new-note{
@@ -80,9 +87,14 @@
                 }
             },
             methods: {
+                resetHeights() {
+                    var textareas = $("textarea");
+                    $(textareas).css("height", 110);
+                    console.log(textareas);
+                },
                 createNote() {
                     console.log("Create", this.newNote);
-                    this.notes.push(this.newNote);
+                    this.notes.unshift(this.newNote);
                     this.clearNote()
                 },
                 clearNote() {
