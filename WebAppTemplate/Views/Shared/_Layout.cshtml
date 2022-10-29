@@ -11,8 +11,18 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     @RenderSection("Styles", required: false)
+    @*testing*@
+    @*Move to styles*@
+<style>
+    #advertisement-section{
+        width: 100vw;
+    }
+</style>
 </head>
 <body>
+    <div id="notification-header" class="container-fluid text-center">
+        <span class="display-1" id="notification-text" v-if="notificationText">{{notificationText}}</span>
+    </div>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
             <div class="container-fluid">
@@ -66,6 +76,19 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
     <script>
+        var notifications = new Vue({
+            el: "#notification-header",
+            data() {
+                return {
+                    notificationText: null
+                }
+            },
+            beforeMount() {
+                //get notification text 
+            }
+        })
+
+
         var layout = new Vue({
             el: "#layout-top",
             data() {
