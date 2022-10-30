@@ -1,0 +1,1 @@
+dotnet ef dbcontext scaffold "Host=localhost;port=5432;Database=templatedev;Username=webuser;Password=password" Npgsql.EntityFrameworkCore.PostgreSQL --output-dir "BOMContext" --force

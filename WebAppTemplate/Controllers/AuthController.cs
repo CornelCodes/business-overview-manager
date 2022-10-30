@@ -1,5 +1,4 @@
 ﻿using DAL.BOMContext;
-using DAL.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Components.Authorization;

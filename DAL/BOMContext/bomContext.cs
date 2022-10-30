@@ -1,5 +1,4 @@
-﻿using DAL.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -10,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL.BOMContext
 {
-    public partial class bomContext : DbContext
+    public partial class bomContext : templatedevContext
     {
         protected readonly IConfiguration Configuration;
 
@@ -19,38 +18,5 @@ namespace DAL.BOMContext
             Configuration = configuration;
         }
 
-        public DbSet<User> Users { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseNpgsql(Configuration.GetConnectionString("WebAppConnection"));
-            }
-        }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.HasAnnotation("Relational:Collation", "English_United States.1252");
-            modelBuilder.Entity<User>(entity =>
-            {
-                entity.ToTable("users");
-
-                entity.Property(e => e.Id)
-                   .HasColumnName("id");
-
-                entity.Property(e => e.Email)
-                    .IsRequired()
-                    .HasColumnName("email");
-
-                entity.Property(e => e.Password)
-                    .IsRequired()
-                    .HasColumnName("password");
-
-            });
-
-            OnModelCreatingPartial(modelBuilder);
-        }
-        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }
