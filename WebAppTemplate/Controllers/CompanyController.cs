@@ -34,6 +34,27 @@ namespace BusinessOverviewManagerClient.Controllers
             return View(company);
         }
 
+        [HttpPost("[action]/{companyId}")]
+        public async Task<IActionResult> Delete(long companyId)
+        {
+            try
+            {
+                var company = await mDb.Companies.FirstOrDefaultAsync(x => x.Id == companyId);
+                if (company != null)
+                {
+                    mDb.Companies.Remove(company);
+                    await mDb.SaveChangesAsync();
+                }
+
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
         [HttpPost("[action]")]
         public async Task<IActionResult> Update(Company vm)
         {
