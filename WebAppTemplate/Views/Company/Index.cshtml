@@ -1,8 +1,75 @@
-﻿
+﻿@model DAL.BOMContext.User
 @{
     ViewData["Title"] = "Companies";
+    var user = Model;
+    var companies = Model.Companies;
 }
 
 <div id="company-page">
 
+    <div class="container-fluid">
+
+        <div class="d-flex flex-column justify-content-center align-items-center">
+            <h3>Username</h3>
+            <span>
+                @( Model.Email.ToString() )
+            </span>
+        </div>
+
+        <div class="container-fluid d-flex flex-column justify-content-center">
+            <div class="pb-3 d-flex justify-content-between">
+                <h3>Companies</h3>
+                <div class="d-flex">
+                    <form action="/" method="get">
+                        <button type="submit" class="btn btn-dark m-2">Back</button>
+                    </form>
+                    <form action="/Company/Details/0" method="get">
+                        <button class="btn btn-primary m-2" type="submit">Create</button>
+                    </form>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered table-dark">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Owner</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var company in companies)
+                        {
+                            <tr>
+                                <td>@company.Id</td>
+                                <td>@company.Name</td>
+                                <td>@user.Email</td>
+                                <td class="d-flex justify-content-end">
+                                    <form action="/Company/Details/@company.Id" method="get">
+                                        <button class="btn btn-secondary m-2" type="submit">Edit</button>
+                                    </form>
+                                    <form action="/Company/Delete/@company.Id" method="get">
+                                        <button class="btn btn-dark text-danger m-2" type="submit">X</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                        @if (companies.Count == 0)
+                        {
+                            <tr>
+                                <td colspan="4" class="text-center">No companies yet</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
 </div>
+
+@section scripts{
+    <script>
+    </script>
+}

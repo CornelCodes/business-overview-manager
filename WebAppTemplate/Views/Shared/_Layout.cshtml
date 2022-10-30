@@ -72,9 +72,9 @@
         </nav>
     </header>
     <div id="layout-top" class="p-3 bg-dark text-white">
-        <div class="container-fluid d-flex justify-content-between">
+        <div class="container-fluid d-flex justify-content-between" v-if="activePage">
             <h3>{{activePage}}</h3>
-            <button class="btn btn-primary" v-on:click="back" v-if="activePage !== 'Home'">Back</button>
+            @*<button class="btn btn-dark" v-on:click="back" v-if="activePage !== 'Home'">Back</button>*@
         </div>
     </div>
     <div id="layout-content" class="content-wrapper" style="min-height: 85vh;">
@@ -125,6 +125,9 @@
                 var activePage = window.location.pathname.replace("/", "").trim();
                 activePage === "" ? activePage = "Home" : activePage;
                 console.log("Mounted", activePage);
+                if (activePage.includes("/")) {
+                    activePage = null;
+                }
                 this.activePage = activePage;
             }
         })
