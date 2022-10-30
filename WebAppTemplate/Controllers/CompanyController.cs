@@ -80,7 +80,6 @@ namespace BusinessOverviewManagerClient.Controllers
                 }
 
                 await mDb.SaveChangesAsync();
-                vm = company;
                 return RedirectToAction("Index");
             }
             catch (Exception e)
