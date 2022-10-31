@@ -19,7 +19,7 @@
     }
 </style>
 </head>
-<body>
+<body class="bg-dark">
     <div id="notification-header" class="container-fluid text-center">
         <span class="display-1" id="notification-text" v-if="notificationText">{{notificationText}}</span>
     </div>
@@ -76,7 +76,7 @@
             <h3>{{activePage}}</h3>
         </div>
     </div>
-    <div id="layout-content" class="content-wrapper" style="min-height: 85vh;">
+    <div id="layout-content" class="content-wrapper">
         <main role="main">
             <div class="page-container">
                 @RenderBody()
@@ -84,7 +84,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted p-3 bg-dark" style="position: fixed; bottom: 0; left: 0; right: 0;">
+    <footer class="footer text-muted p-3 bg-dark" style="position: fixed; bottom: 0; left: 0; right: 0;">
         <div class="container d-flex justify-content-end text-white">
             &copy; 2022 - Business Overview Manager
         </div>
