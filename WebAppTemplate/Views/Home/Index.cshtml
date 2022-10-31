@@ -6,37 +6,50 @@
     <div class="text-center">
         <h1>What would you like to do?</h1>
     </div>
-    <div class="d-flex justify-content-center mt-3">
-        <div class="card border-dark text-center" style="width: fit-content;">
-            <a class="nav-link text-dark anchor-text" asp-area="" asp-controller="Ideaboard" asp-action="Index">Ideaboard</a>
+    <div class="d-flex flex-wrap justify-content-center mt-5">
+        <div class="card dark-card border-dark text-center" style="width: fit-content;">
+            <a class="nav-link anchor-text" asp-area="" asp-controller="Ideaboard" asp-action="Index">Ideaboard</a>
         </div>
-        <div class="card border-dark text-center" style="width: fit-content;">
-            <a class="nav-link text-dark anchor-text" asp-area="" asp-controller="Company" asp-action="Index">Companies</a>
+        <div class="card dark-card border-dark text-center" style="width: fit-content;">
+            <a class="nav-link anchor-text" asp-area="" asp-controller="Company" asp-action="Index">Companies</a>
         </div>
-        <div class="card border-dark text-center" style="width: fit-content;">
-            <a class="nav-link text-dark anchor-text" asp-area="" asp-controller="Marketing" asp-action="Index">Marketing</a>
+        <div class="card dark-card border-dark text-center" style="width: fit-content;">
+            <a class="nav-link anchor-text" asp-area="" asp-controller="Marketing" asp-action="Index">Marketing</a>
         </div>
-        <div class="card border-dark text-center" style="width: fit-content;">
-            <a class="nav-link text-dark anchor-text" asp-area="" asp-controller="Client" asp-action="Index">Clients</a>
+        <div class="card dark-card border-dark text-center" style="width: fit-content;">
+            <a class="nav-link anchor-text" asp-area="" asp-controller="Client" asp-action="Index">Clients</a>
         </div>
-        <div class="card border-dark text-center" style="width: fit-content;">
-            <a class="nav-link text-dark anchor-text" asp-area="" asp-controller="Employee" asp-action="Index">Employees</a>
+        <div class="card dark-card border-dark text-center" style="width: fit-content;">
+            <a class="nav-link anchor-text" asp-area="" asp-controller="Employee" asp-action="Index">Employees</a>
         </div>
-        <div class="card border-dark text-center" style="width: fit-content;">
-            <a class="nav-link text-dark anchor-text" asp-area="" asp-controller="Document" asp-action="Index">Documents</a>
+        <div class="card dark-card border-dark text-center" style="width: fit-content;">
+            <a class="nav-link anchor-text" asp-area="" asp-controller="Document" asp-action="Index">Documents</a>
         </div>
     </div>
 </div>
 
 @section styles{
     <style>
-        .card{
+        .dark-card {
+            background-color: #212529;
+            color: white;
             margin: 10px;
+            padding: 20px 5px;
+            min-width: 150px;
         }
+
+            .dark-card:hover {
+                background-color: white!important;
+            }
+
+            .dark-card:hover .anchor-text{
+                color: #212529!important;
+            }
 
         .anchor-text {
             text-decoration: none;
             padding: 10px;
+            color: white;
         }
     </style>
 }
