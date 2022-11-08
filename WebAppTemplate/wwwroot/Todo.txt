@@ -1,5 +1,7 @@
-﻿Web app skeleton template essentials
+﻿TODO:
 
+Create clients and employees
+Email builder
 Send emails
 - Invoices
 - Messages 
@@ -7,15 +9,13 @@ Send emails
 
 
 
-1. Authorization and Authentication
-- Login & Register
+
+Authorization and Authentication
+- Login & Register (Bug authorize route)
 - Profile updating
 
-2. EFCore and Data access
-- Scaffolding
-
-3. Error logging and handling
+Error logging and handling
 - Redirects and error display for developers and regular users
 - Email notifications with trace logs
 
-4. Admin dashboard
+Admin dashboard

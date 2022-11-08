@@ -1,4 +1,6 @@
-﻿using DAL.BOMContext;
+﻿using BusinessOverviewManagerClient.Models;
+using DAL.BOMContext;
+using DAL.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
@@ -27,11 +29,33 @@ namespace BusinessOverviewManagerClient.Controllers
         public async Task<IActionResult> Details(long companyId)
         {
             var company = await mDb.Companies.FirstOrDefaultAsync(x => x.Id == companyId);
-            if (company == null)
+            var vm = new CompanyViewModel()
             {
-                company = new Company();
-            }
-            return View(company);
+                Company = company != null ? company : new Company(),
+                Address = "Test address",
+                AlternativeContactNumber = "0812345679",
+                ContactNumber = "0812345679",
+                SocialMediaPlatforms = new List<SocialMediaPlatform>()
+                {
+                    new SocialMediaPlatform()
+                    {
+                        Name = "Facebook",
+                        Url = "https://facebook.com",
+                    },
+                    new SocialMediaPlatform()
+                    {
+                        Name = "Instagram",
+                        Url = "https://instagram.com",
+                    },
+                    new SocialMediaPlatform()
+                    {
+                        Name = "Linkedin",
+                        Url = "https://linkedin.com",
+                    },
+                },
+            };
+
+            return View(vm);
         }
 
         [HttpPost("[action]/{companyId}")]
